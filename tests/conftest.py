@@ -19,3 +19,16 @@ def user_login_data():
 @pytest.fixture
 def user_login_data_invalid():
     return {"email": "eve.holt@reqres.in", "password": ""}
+
+
+@pytest.fixture(scope="function")
+def print_before_each():
+    print("\n Запускается перед каждым тестом")
+    return "value"
+
+
+@pytest.fixture(scope="module")
+def setup_and_teardown():
+    print("\n SETUP - перед тестом")
+    yield
+    print("TEARDOWN - после теста")
